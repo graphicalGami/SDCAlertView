@@ -129,7 +129,7 @@ public final class AlertController: UIViewController {
     public let preferredStyle: AlertControllerStyle
 
     private let alert: UIView & AlertControllerViewRepresentable
-    private lazy var transitionDelegate: Transition = Transition(alertStyle: self.preferredStyle)
+    private lazy var transitionDelegate: UIViewControllerTransitioningDelegate = SDCAlertView.Transition(alertStyle: self.preferredStyle) as UIViewControllerTransitioningDelegate
 
     // MARK: - Initialization
 
@@ -176,7 +176,7 @@ public final class AlertController: UIViewController {
             let nibName = String(describing: ActionSheetView.self)
             let objects = Bundle.resourceBundle.loadNibNamed(nibName, owner: nil, options: nil)
             if let actionSheet = objects?.first as? ActionSheetView {
-                self.alert = actionSheet
+                self.alert = actionSheet as UIView & AlertControllerViewRepresentable
             } else {
                 self.alert = AlertView()
             }

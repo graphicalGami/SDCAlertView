@@ -1,3 +1,5 @@
+import UIKit
+
 final class AlertView: UIView, AlertControllerViewRepresentable {
     var titleLabel: AlertLabel! = AlertLabel()
     var messageLabel: AlertLabel! = AlertLabel()
